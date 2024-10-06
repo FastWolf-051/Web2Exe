@@ -1,3 +1,8 @@
+// Original created by fastdevil
+// -- You can modify/rewrite this project to another language
+// -- only with this license
+// All rights reserved by @fastwolf. 2024
+
 #ifndef ENVIRONMENT_H
 #define ENVIRONMENT_H
 
