@@ -38,15 +38,7 @@ string FileManager::GetHTMLWindowTitle() {
 	string data = GetWebpageCode();
 	string title;
 	for (int i = 0; i < data.length(); i++) {
-		// check, if <title> element exists in html document
-		if (data[i] == '<' &&
-			data[overflow(i) + 1] == 't' &&
-			data[overflow(i) + 2] == 'i' &&
-			data[overflow(i) + 3] == 't' &&
-			data[overflow(i) + 4] == 'l' &&
-			data[overflow(i) + 5] == 'e' &&
-			data[overflow(i) + 6] == '>') {
-			// append next characters to string
+		if (data.substr(i, 7) == "<title>") {
 			int ci = i + 7;
 			while (data[ci] != 60) {
 				title += data[ci];
@@ -61,20 +53,7 @@ string FileManager::GetWebpageCode() {
 	string fullData;
 
 	if (IsCompiledScriptExists()) {
-		ifstream cmpFile;
-		cmpFile.open(Environment::GetEnvironmentPath() + "stuff/compdat.cmp");
-		string cmpData((istreambuf_iterator<char>(cmpFile)), istreambuf_iterator<char>());
-		string decodedChar;
-		for (int i = 0; i < cmpData.length(); i++) {
-			if (cmpData[i] != ' ') {
-				decodedChar += cmpData[i];
-			}
-			else {
-				decodedChar = (wchar_t)(stoi(decodedChar) >> 3);
-				fullData += decodedChar;
-				decodedChar = "";
-			}
-		}
+		fullData = CodeCompiler::Decompile();
 	}
 	else {
 		string htmlData = GetHTMLcode();

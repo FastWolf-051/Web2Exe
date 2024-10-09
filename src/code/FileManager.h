@@ -8,6 +8,7 @@
 
 #include "DefinedTypes.h"
 #include "Environment.h"
+#include "CodeCompiler.h"
 
 class FileManager {
 public:
@@ -19,7 +20,6 @@ public:
 	static string GetWebpageCode();
 
 	static void CompileSourceCode();
-	static void DeleteCache();
 
 	static bool IsCompiledScriptExists();
 	static bool IsShowCMD();

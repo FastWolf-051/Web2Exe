@@ -6,6 +6,7 @@
 #include "DefinedTypes.h"
 #include "FileManager.h"
 #include "Tools.h"
+#include "JSFunctions.h"
 
 ComPtr<WebController> webviewController;
 ComPtr<WebView> webviewWindow;
@@ -94,6 +95,10 @@ int __stdcall wWinMain(InstanceHandle hInstance, InstanceHandle, wchar_t*, int n
     ShowWindow(handle, nCmdShow);
     SetWindowTextA(handle, FileManager::GetHTMLWindowTitle().c_str());
     InitializeWebView2(handle);
+
+    JSFunctions* jf = new JSFunctions();
+    jf->ProcessJSCode();
+    JSFunctions::DeleteInstance(*jf);
 
     if (IsDebug) FreeConsole();
 

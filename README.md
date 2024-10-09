@@ -4,6 +4,7 @@
 # Update log:
  v1.0 -> added ability to convert an 3 html/css/js app to exe (now you cant have more than 2 css/js files)
          if you have an title of html page, it displays on executable window
+ v1.1 -> added native support 2 js commads: alert(), console.log() in js (this feature in beta-test)
 # About project
  This tool is created to convert your web app (html/css/js) to exe
  Avaliable only for windows platform
