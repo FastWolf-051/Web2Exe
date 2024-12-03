@@ -1,0 +1,4 @@
+v1.0 -> added ability to convert an 3 html/css/js app to exe (now you cant have more than 2 css/js files)
+------> if you have an title of html page, it displays on executable window
+v1.1 -> added native support for 2 js commads: alert() (window.alert()), console.log() in js (this feature in beta-test)
+v1.2 -> added native support for 3 js functions: console.error() , console.warn(), console.clear()
