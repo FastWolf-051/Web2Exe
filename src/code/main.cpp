@@ -1,4 +1,4 @@
-﻿// Original created by fastdevil
+﻿// Original created by fastwolf
 // -- You can modify/rewrite this project to another language
 // -- only with this license
 // All rights reserved by @fastwolf. 2024
@@ -6,7 +6,8 @@
 #include "DefinedTypes.h"
 #include "FileManager.h"
 #include "Tools.h"
-#include "JSFunctions.h"
+
+#include "javascript/JSFunctions.h"
 
 ComPtr<WebController> webviewController;
 ComPtr<WebView> webviewWindow;
@@ -97,6 +98,7 @@ int __stdcall wWinMain(InstanceHandle hInstance, InstanceHandle, wchar_t*, int n
     InitializeWebView2(handle);
 
     JSFunctions* jf = new JSFunctions();
+
     jf->ProcessJSCode();
     JSFunctions::DeleteInstance(*jf);
 

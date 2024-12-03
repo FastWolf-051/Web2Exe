@@ -1,4 +1,4 @@
-// Original created by fastdevil
+// Original created by fastwolf
 // -- You can modify/rewrite this project to another language
 // -- only with this license
 // All rights reserved by @fastwolf. 2024

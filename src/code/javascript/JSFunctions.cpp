@@ -1,9 +1,12 @@
-// Original created by fastdevil
+// Original created by fastwolf
 // -- You can modify/rewrite this project to another language
 // -- only with this license
 // All rights reserved by @fastwolf. 2024
 
 #include "JSFunctions.h"
+
+#include "JWindow.h"
+#include "JConsole.h"
 
 bool JSFunctions::IsInCode(const string& parameter) {
 	string data = CodeCompiler::Decompile();
@@ -41,32 +44,18 @@ vector<string> JSFunctions::GetFuncParamsList() {
 	return this->paramData;
 }
 
-void JSFunctions::Alert() {
-	if (IsInCode("alert(")) {
-		MessageBoxA(nullptr, this->GetFuncParamsList()[0].c_str(), "alert box", MB_ICONWARNING);
-	}
-	else {
-		printf("JSFunctions::Alert(): unable to call alert(), because it not was in script");
-	}
-}
-
 void JSFunctions::ProcessJSCode() {
-	JSFunctions::Console jconsole;
+	JConsole jcons;
+	JWindow jwin;
 
-	if (this->IsInCode("alert(")) this->Alert();
-	if (this->IsInCode("console.log(")) jconsole.Log();
+	if (this->IsInCode("console.log(")) jcons.Log();
+	if (this->IsInCode("console.warn(")) jcons.Warn();
+	if (this->IsInCode("console.error(")) jcons.Error();
+	if (this->IsInCode("console.clear(")) jcons.Clear();
+
+	if (this->IsInCode("alert(") || this->IsInCode("window.alert(")) jwin.Alert();
 }
 
 void JSFunctions::DeleteInstance(const JSFunctions& instance) {
-	delete &instance;
-}
-
-void JSFunctions::Console::Log() {
-	JSFunctions jf;
-	if (jf.IsInCode("console.log(")) {
-		printf("%s", jf.GetFuncParamsList()[0].c_str());
-	}
-	else {
-		printf("JSFunctions::Console::Log() unable to call console.log(), because it was not in script");
-	}
+	delete& instance;
 }
